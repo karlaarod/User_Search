@@ -1,27 +1,19 @@
-import React from 'react';
-import {SearchForm, SearchList} from ".";
-import './navbar.css'
+import React from "react";
+import GitHubIcon from "@material-ui/icons/GitHub";
 
-import {
+import { AppBar, Link } from "@material-ui/core";
 
-    AppBar,
-    Link,
-    Toolbar,
-  } from "@material-ui/core";
-
-
-const NavBar = ()=>{
-
-    return (
-        <nav>
-        <AppBar position='static' 
-        className='nav'
-
-        >
-           <Link href='/'> GitHub User Search </Link>
-        </AppBar>
-        </nav>
-    )
-}
+const NavBar = () => {
+  return (
+    <nav>
+      <AppBar position="static" className="nav">
+        <div className="left-side">
+          <GitHubIcon className="nav-icon" />
+          <Link href="/"> GitHub User Search </Link>
+        </div>
+      </AppBar>
+    </nav>
+  );
+};
 
 export default NavBar;

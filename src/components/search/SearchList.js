@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./search.css";
 import PaginationCount from "../pagination/Pagination";
-import axios from "axios";
 import { callApi } from "../../api";
+
+require("dotenv").config();
+
+const { REACT_APP_PERSONAL_TOKEN } = process.env;
 
 const SearchList = ({
   searchResults,
@@ -13,6 +16,8 @@ const SearchList = ({
   const { items } = searchResults;
   const [usersData, setUsersData] = useState([]);
 
+  //map over all search results to call api to retrive users data info(e.g. followers, bio etc.). Needed to pass in a token to workaround the GitHub's API Rate Limits (more info in README.md). Returns back an array of users profile data.
+
   useEffect(async () => {
     setLoading(true);
 
@@ -20,32 +25,28 @@ const SearchList = ({
       ? await items.map(async (item) => {
           const data = await callApi({
             url: `users/${item.login}`,
-            token: "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",
+            token: `${REACT_APP_PERSONAL_TOKEN}`,
           });
           return data;
         })
       : "";
     const userData = await Promise.all(userURL);
-    console.log("urlData", userData);
 
     setUsersData(userData);
     setLoading(false);
   }, [searchResults]);
 
-  console.log("userData", usersData);
-
   if (!items) {
     return <div></div>;
   }
   return (
-  
-      <div className="results-container">
-        <PaginationCount
-          searchResults={searchResults}
-          setSearchResults={setSearchResults}
-          queryString={queryString}
-        />      
-      {searchResults ? (
+    <div className="results-container">
+      <PaginationCount
+        searchResults={searchResults}
+        setSearchResults={setSearchResults}
+        queryString={queryString}
+      />
+      {items.length > 0 ? (
         items.map((item, index) => (
           <div key={index} className="each-user">
             <header className="results-header">
@@ -56,12 +57,10 @@ const SearchList = ({
               if (user.login === item.login) {
                 return (
                   <main key={i} className="results-details">
-
                     <h5>Followers: {user.followers}</h5>
                     <h5>Following: {user.following}</h5>
                     <p className="user-bio">{user.bio}</p>
                     <p className="user-location">{user.location}</p>
-
                   </main>
                 );
               }

@@ -4,6 +4,6 @@ import { CircularProgress } from "@material-ui/core";
 
 export default function Loading(){
     
-        return <CircularProgress className="loading-icon" />;
+return <CircularProgress className="loading-icon" />;
     
 }

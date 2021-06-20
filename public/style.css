@@ -8,20 +8,29 @@
 body {
   margin: 0;
   padding: 0;
-  color: #555;
-  font-size: 20px;
   width: auto;
   height: auto;
-  background-color: rgba(147, 208, 212, 0.322);
 }
 
 
-.loading-icon svg{
-    margin-left: 35em;
-    margin-top: 20em;
-    background-color: aquamarine;
+ .nav .left-side{
+  float: left;
+  margin-bottom: 10px;
   }
 
-  header .nav{
-    background-color: blue;
+  .nav a{
+    text-decoration: none;
+    color: rgb(247, 234, 218);
+    font-size: 1.2em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  } 
+
+  .nav a:hover{
+    text-decoration: none;
+  }
+
+
+  .loading-icon {
+    margin-left: 35em;
+    margin-top: 10em;
   }
