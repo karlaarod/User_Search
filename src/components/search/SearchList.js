@@ -3,10 +3,6 @@ import "./search.css";
 import PaginationCount from "../pagination/Pagination";
 import { callApi } from "../../api";
 
-require("dotenv").config();
-
-const { REACT_APP_PERSONAL_TOKEN } = process.env;
-
 const SearchList = ({
   searchResults,
   setSearchResults,
@@ -16,9 +12,8 @@ const SearchList = ({
   const { items } = searchResults;
   const [usersData, setUsersData] = useState([]);
 
-  console.log('REACT_APP_PERSONAL_TOKEN', REACT_APP_PERSONAL_TOKEN)
 
-  //map over all search results to call api to retrive users data info(e.g. followers, bio etc.). Needed to pass in a token to workaround the GitHub's API Rate Limits (more info in README.md). Returns back an array of users profile data.
+  //map over all search results to call api to retrive users data info(e.g. followers, bio etc.). 
 
   useEffect(async () => {
     setLoading(true);
@@ -28,24 +23,17 @@ const SearchList = ({
           const data = await callApi({
             url: `users/${item.login}`,
           });
-          console.log('data', data)
 
           return data;
 
-
         })
       : "";
-
-      console.log('user url', userURL)
 
     const userData = await Promise.all(userURL);
 
     setUsersData(userData);
     setLoading(false);
   }, [searchResults]);
-
-  console.log('usersData', usersData)
-
 
 
   if (!items) {
