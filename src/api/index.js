@@ -1,7 +1,9 @@
-export const BASE_URL = "https://api.github.com/search/";
+export const BASE_URL = "https://api.github.com/";
 
 
-export const callApi = async ({ url, method, body }) => {
+
+export const callApi = async ({ url, method, token, body }) => {
+  // console.log("callApi: ", { url, method,token, body });
 
   try {
     const options = {
@@ -11,11 +13,14 @@ export const callApi = async ({ url, method, body }) => {
       },
       body: JSON.stringify(body),
     };
-    console.log("options ", options);
+    // console.log("options ", options);
+    if (token) {
+      options.headers['Authorization'] = `Bearer ${token}`;
+    }
 
     const response = await fetch(BASE_URL + url, options);
     const data = await response.json();
-    console.log("data: ", data);
+    // console.log("data: ", data);
     if (data.error) throw data.error;
     return data;
   } catch (error) {
@@ -23,3 +28,5 @@ export const callApi = async ({ url, method, body }) => {
     console.log('error:', error)
   }
 };
+
+

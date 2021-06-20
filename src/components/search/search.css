@@ -1,0 +1,89 @@
+svg{
+    margin-top: 20px;
+}
+
+.results-container{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.user-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+
+.each-user{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgb(129, 129, 129);
+    height: fit-content;
+    width: 100%;
+}
+
+.results-header{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+    height: 20%;
+
+}
+
+
+.user-bio{
+    margin-bottom: 0;
+    font-size: 14px;
+    width: 100%;
+
+}
+
+.user-location{
+    font-size: 13px;
+    color: rgb(65, 62, 62);
+}
+
+.results-details {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    top: 10px;
+    margin: 0 0;
+}
+
+.results-details h5{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.search-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+
+}
+
+.title{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+
+}
+
+.search-container input{
+
+    width: 600px;
+    margin: auto;
+
+}

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Route, useHistory } from "react-router-dom";
 import { callApi } from "../api";
-import './App.css';
-import { UsersList } from ".";
+import {SearchForm, SearchList} from ".";
+import Loading from "./Loading";
+import NavBar from "./NavBar";
 
 const fetchUsers= async()=>{
 
@@ -18,30 +19,43 @@ const fetchUsers= async()=>{
 }
 
 function App() {
-const [usersData, setUsersData] = useState({})
+const [queryString, setQueryString] = useState('');
+const [currentPage, setCurrentPage] = useState(1);
+const [searchResults, setSearchResults] = useState ({});
 const [loading, setLoading]= useState(false);
 
-useEffect(async () =>{
+// useEffect(async () =>{
 
-  setLoading(true);
-  const users= await fetchUsers();
+//   setLoading(true);
+//   const users= await fetchUsers();
 
-  if(users){
-    setLoading(false)
-    setUsersData(users)
-  }
+//   if(users){
+//     setLoading(false)
+//     setUsersData(users)
+//   }
 
-}, [])
+// }, [])
 
-console.log('users list:', usersData)
 
   return (
     <div className="App">
-      <h1>GitHub</h1>
-      <UsersList
-      usersData = {usersData}
-      loading= {loading}
+      <NavBar/>
+      <SearchForm
+      setSearchResults ={setSearchResults}
+      queryString = {queryString}
+      setQueryString = {setQueryString}
+      setLoading= {setLoading}
       />
+      <Route exact path= {`/search/users`}>
+        <SearchList
+        searchResults ={searchResults}
+        setSearchResults ={setSearchResults}
+        queryString = {queryString}
+        setLoading= {setLoading}
+        />
+      </Route>
+      { loading ? <Loading/> : null }
+
     </div>
   );
 }
