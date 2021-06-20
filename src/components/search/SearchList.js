@@ -3,6 +3,9 @@ import "./search.css";
 import PaginationCount from "../pagination/Pagination";
 import { callApi } from "../../api";
 
+require("dotenv").config();
+const { REACT_APP_PERSONAL_TOKEN } =process.env;
+
 const SearchList = ({
   searchResults,
   setSearchResults,
@@ -15,14 +18,17 @@ const SearchList = ({
 
   //map over all search results to call api to retrive users data info(e.g. followers, bio etc.). 
 
+
   useEffect(async () => {
     setLoading(true);
 
     const userURL = items
-      ? await items.map(async (item) => {
+      ?  items.map(async item => {
           const data = await callApi({
             url: `users/${item.login}`,
+            // token: `${REACT_APP_PERSONAL_TOKEN}`
           });
+          
 
           return data;
 
@@ -35,6 +41,7 @@ const SearchList = ({
     setLoading(false);
   }, [searchResults]);
 
+  console.log('user data', usersData)
 
   if (!items) {
     return <div></div>;

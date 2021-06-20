@@ -11,7 +11,7 @@ Would get an 403 FORBIDDEN error when trying to call GitHub API, this is because
 To avoid this issue add "REACT_APP_PERSONAL_TOKEN= *insert your prersonal access token*" to .env file to bypass error message. 
 How to create a token: https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
-**Note: this is only neccessary if working with code. Deployed app does not require users to provide authentication.** 
+**Note: this is may only be neccessary if working with code. Deployed app does not require users to provide authentication.** 
 
 
 ## In the project directory, you can run:
