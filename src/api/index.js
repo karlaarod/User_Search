@@ -3,7 +3,7 @@ export const BASE_URL = "https://api.github.com/";
 
 
 export const callApi = async ({ url, method, token, body }) => {
-  console.log("callApi: ", { url, method,token, body });
+  // console.log("callApi: ", { url, method,token, body });
 
   try {
     const options = {
