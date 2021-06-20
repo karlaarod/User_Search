@@ -9,7 +9,6 @@ const PaginationCount = ({ searchResults, setSearchResults, queryString }) => {
   const pageCount = Math.ceil(searchResults.total_count / postsPerPage);
 
   const handleChange = (event, value) => {
-    console.log("handle change value: ", value);
     currentPage = value;
   };
 

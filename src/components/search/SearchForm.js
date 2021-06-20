@@ -31,7 +31,7 @@ const SearchForm = ({
       </div>
       <form onSubmit={fetchSearchs}>
         <TextField
-          label="Search GitHub"
+          label="Search GitHub Users"
           value={queryString}
           onChange={(event) => {
             setQueryString(event.target.value);
