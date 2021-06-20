@@ -27,7 +27,6 @@ const SearchList = ({
       ? await items.map(async (item) => {
           const data = await callApi({
             url: `users/${item.login}`,
-            token: `${REACT_APP_PERSONAL_TOKEN}`,
           });
           console.log('data', data)
 
